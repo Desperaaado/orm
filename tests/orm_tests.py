@@ -1,11 +1,16 @@
+import os
 from nose.tools import *
-import NAME
+from orm.orm import *
 
-def setup():
-    print("SETUP!")
+if os.path.exists('data.db'):
+    os.remove('data.db')
 
-def teardown():
-    print("TEAR DOWN!")
+connect(':menmary:')
+load_schema('create.sql')
 
-def test_basic():
-    print("I RAN!")
+def test_Person():
+    jeo = Person('Jeo', 'Flaks', 33)
+    murph = Person('Murphian', 'Xiao', 27)
+    # jeo.create()
+    # murph.create()
+    assert jeo.fname == 'Jeo'
