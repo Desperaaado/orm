@@ -1,6 +1,8 @@
-def connect(stuff):
+import sqlite3
+
+def connect(database):
     #连接到内存或其它地方
-    pass
+    sqlite3.connect(database)
 
 def load_schema(file):
     #在sqlite3下运行 file

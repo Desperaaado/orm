@@ -5,7 +5,7 @@ from orm.orm import *
 if os.path.exists('data.db'):
     os.remove('data.db')
 
-connect(':menmary:')
+connect(':memory:')
 load_schema('create.sql')
 
 def test_Person():
