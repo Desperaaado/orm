@@ -6,11 +6,11 @@ if os.path.exists('data.db'):
     os.remove('data.db')
 
 connect(':memory:')
-load_schema('create.sql')
+load_schema(r'C:\Users\xiao0\projects_pro\orm\orm\create.sql')
 
 def test_Person():
     jeo = Person('Jeo', 'Flaks', 33)
     murph = Person('Murphian', 'Xiao', 27)
-    # jeo.create()
-    # murph.create()
+    jeo.create()
+    murph.create()
     assert jeo.fname == 'Jeo'
