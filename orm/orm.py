@@ -33,4 +33,22 @@ class Person(object):
         CONN.commit()
 
     def update(self):
-        pass
+        cur = CONN.cursor()
+        cur.execute('update person set fname=?, lname=?, age=? where id=?',
+                    (self.fname, self.lname, self.age, self.pk))
+        CONN.commit()
+
+    def delete(self):
+        cur = CONN.cursor()
+        cur.execute('delete from person where id=?', (self.pk,))
+        CONN.commit()
+
+    @classmethod
+    def read(self, pk):
+        cur = CONN.cursor()
+        cur.execute('select id, fname, lname, age from person where id=?',
+                    (pk,))
+        row = cur.fetchone()
+        obj = Person(*row[1:])
+        obj.pk = row[0]
+        return obj

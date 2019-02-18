@@ -14,3 +14,9 @@ def test_Person():
     jeo.create()
     murph.create()
     assert jeo.fname == 'Jeo'
+    jeo.fname = 'Mama'
+    jeo.update()
+    assert jeo.fname == 'Mama'
+    murph2 = Person.read(murph.pk)
+    assert murph2.fname == 'Murphian'
+    jeo.delete()
